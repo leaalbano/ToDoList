@@ -1,6 +1,9 @@
 # ToDoList
 To do list for cpsc 254 
 
+### Personal Branch
+Create a branch using first name. This is where you will be able to test and do anything with your code.
+
 ### Test Branch
 Please use test branch when adding or testing your code for the project. 
 This allows us to safely create our project without messing up the main branch.
