@@ -51,5 +51,5 @@ function newElement() {
       var div = this.parentElement;
       div.style.display = "none";
     }
-  }
+}
 }
