@@ -2,13 +2,9 @@
 To do list for cpsc 254 
 
 ### Personal Branch
-Create a branch using first name. This is where you will be able to test and do anything with your code.
-
+Create a branch using first name. This is where you will develop your feature. Make sure to pull from the test branch before you work on your personal branch.
 ### Test Branch
-Please use test branch when adding or testing your code for the project. 
-This allows us to safely create our project without messing up the main branch.
-Merge your branch into test when ready.
-
+Only push into the test branch once you have resolved all merge conflicts in your personal branch.
 ### Main Branch
 Please let everyone approve your push to the main branch so it doesn't cause any failures for our project. Only push code that has no errors, etc.
 Only merge into main from the test branch. 
