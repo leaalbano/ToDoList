@@ -1,14 +1,15 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/app.jsx', // Make sure the entry file is 'app.jsx'
+  entry: './src/app.jsx',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
     static: path.join(__dirname, 'dist'),
-    port: 8080, // You can change this port to any available port
+    port: 8080,
   },
   module: {
     rules: [
@@ -25,6 +26,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+    }),
+  ],
   resolve: {
     extensions: ['.js', '.jsx'],
   },

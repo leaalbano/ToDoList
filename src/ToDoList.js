@@ -27,7 +27,7 @@ const TodoList = () => {
   return (
     <div>
       <div className="header">
-        <h2 style={{ margin: '5px' }}>My To Do List</h2>
+        <h2 style={{ margin: '5px' }}>Long To Do List</h2>
         <input
           type="text"
           value={newTask}
