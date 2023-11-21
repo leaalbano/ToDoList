@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TodoList from './ToDoList'; // Import your React component
+import TodoList from './components/ToDoList'; // Import your React component
 
 ReactDOM.render(
   <React.StrictMode>

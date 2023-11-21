@@ -121,3 +121,18 @@ input {
 .addBtn:hover {
   background-color: #bbb;
 }
+
+.timer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.button-container-timer {
+  display:flex;
+  justify-content: center;
+  gap: 10px;
+  padding-bottom: 5px;
+}

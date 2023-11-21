@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PomodoroTimer from './Timer';
 import './styles.css'; // Import your CSS file
 
 const TodoList = () => {
@@ -26,6 +27,7 @@ const TodoList = () => {
 
   return (
     <div>
+      <PomodoroTimer />
       <div className="header">
         <h2 style={{ margin: '5px' }}>Long To Do List</h2>
         <input
