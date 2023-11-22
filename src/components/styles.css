@@ -136,3 +136,64 @@ input {
   gap: 10px;
   padding-bottom: 5px;
 }
+
+.timer-button {
+  background-color: #4CAF50; /* Green background */
+  border: none; /* Remove border */
+  color: white; /* White text */
+  padding: 15px 32px; /* Some padding */
+  text-align: center; /* Centered text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer; /* Pointer/hand icon */
+  transition-duration: 0.4s; /* Transition */
+}
+
+.timer-button:hover {
+  background-color: #45a049; /* Green background on hover */
+}
+
+.timer-options {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.timer-option {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: #ddd;
+  transition: background-color 0.3s ease;
+}
+
+.timer-option.selected {
+  background-color: #aaa;
+}
+
+.timer-settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.timer-settings label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.timer-settings input {
+  width: 100px;
+  border: 1px solid #000;
+  margin-left: 10px;
+}
