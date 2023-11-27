@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PomodoroTimer from './Timer';
 import './styles.css'; // Import your CSS file
 
@@ -6,22 +6,51 @@ const TodoList = () => {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
 
+  useEffect(() => {
+    fetch('http://localhost:8081/getTasks') // replace with your server's URL
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setTasks(data);
+      })
+      .catch(error => console.error('Error:', error));
+  }, []);
+
   const addTask = () => {
     if (newTask.trim() === '') {
       return;
     }
-    setTasks([...tasks, newTask]);
-    setNewTask('');
+  
+    const task = {
+      title: newTask,
+      status: 'uncomplete',
+      createdAt: new Date().toISOString()
+    };
+  
+    fetch('http://localhost:8081/createTask', { // replace with your server's URL
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(task),
+    })
+      .then(response => response.json())
+      .then(data => {
+        setTasks(oldTasks => [...oldTasks, data]);
+        setNewTask('');
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   };
 
-  const markTaskComplete = (index) => {
-    const updatedTasks = [...tasks];
-    updatedTasks[index] = 'checked';
+  const markTaskComplete = (id) => {
+    const updatedTasks = tasks.map(task => task.id === id ? {...task, status: 'complete'} : task);
     setTasks(updatedTasks);
   };
 
-  const deleteTask = (index) => {
-    const updatedTasks = tasks.filter((_, i) => i !== index);
+  const deleteTask = (id) => {
+    const updatedTasks = tasks.filter(task => task.id !== id);
     setTasks(updatedTasks);
   };
 
@@ -42,16 +71,16 @@ const TodoList = () => {
       </div>
 
       <ul id="myUL">
-        {tasks.map((task, index) => (
+        {tasks.map((task) => (
           <li
-            key={index}
-            className={task === 'checked' ? 'checked' : ''}
-            onClick={() => markTaskComplete(index)}
+            key={task.id}
+            className={task.status === 'complete' ? 'checked' : ''}
+            onClick={() => markTaskComplete(task.id)}
           >
-            {task}
+            {task.title}
             <span
               className="close"
-              onClick={() => deleteTask(index)}
+              onClick={() => deleteTask(task.id)}
             >
               &#215;
             </span>
