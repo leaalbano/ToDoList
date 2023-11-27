@@ -14,7 +14,7 @@ const TodoList = () => {
         setTasks(data);
       })
       .catch(error => console.error('Error:', error));
-  }, []);
+  }, [tasks]);
 
   const addTask = () => {
     if (newTask.trim() === '') {
