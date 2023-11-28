@@ -1,14 +1,21 @@
-# ToDoList
-To do list for cpsc 254 
+# ToDoList Timer
 
-### Personal Branch
-Create a branch using first name. This is where you will be able to test and do anything with your code.
+* Pomodoro timer to help people stay on task
 
-### Test Branch
-Please use test branch when adding or testing your code for the project. 
-This allows us to safely create our project without messing up the main branch.
-Merge your branch into test when ready.
 
-### Main Branch
-Please let everyone approve your push to the main branch so it doesn't cause any failures for our project. Only push code that has no errors, etc.
-Only merge into main from the test branch. 
+# How to run todo list
+  * install webpack
+  * npm start within the directory where the webpack.config is
+
+# How to run Go Server
+  * install Go
+  * in backend folder run 'go run main.go'
+  * Now the backend can communicate with the server
+
+# Ports
+  * Had to use github.com/rs/cors so that we can use two different ports on the same localMachine for the front and backend
+  * Go server on port 8081
+  * Webpack on 8080
+
+
+![Todolist](./src/components/image.png)
