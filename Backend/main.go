@@ -37,11 +37,61 @@ func main() {
 	http.Handle("/createTask", cors.Default().Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		createTask(client, w, r)
 	})))
+
 	http.Handle("/getTasks", cors.Default().Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		getTasks(client, w, r)
 	})))
 
-	log.Fatal(http.ListenAndServe(":8081", nil))
+	http.Handle("/deleteTask", cors.Default().Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		deleteTask(client, w, r)
+	})))
+
+	http.Handle("/updateTask", cors.Default().Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		updateTask(client, w, r)
+	})))
+
+	log.Fatal(http.ListenAndServe(":8080", nil))
+}
+
+// UpdateTask function
+func updateTask(client *mongo.Client, w http.ResponseWriter, r *http.Request) {
+	var task Task
+	err := json.NewDecoder(r.Body).Decode(&task)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	// Check if the task ID is provided
+	if task.ID == "" {
+		http.Error(w, "Missing task ID", http.StatusBadRequest)
+		return
+	}
+
+	// Connect to the collection
+	collection := client.Database("todoDB").Collection("tasks")
+	ctx, _ := context.WithTimeout(context.Background(), 5*time.Second)
+
+	// Create a filter for the document to update
+	filter := bson.M{"_id": task.ID}
+
+	// Define the update
+	update := bson.M{
+		"$set": bson.M{
+			"title":  task.Title,
+			"status": task.Status,
+			// You can add other fields here that you want to update
+		},
+	}
+
+	// Update the task
+	result, err := collection.UpdateOne(ctx, filter, update)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	json.NewEncoder(w).Encode(result)
 }
 
 // Import necessary packages like "net/http", "encoding/json", etc.
@@ -60,6 +110,28 @@ func createTask(client *mongo.Client, w http.ResponseWriter, r *http.Request) {
 	collection := client.Database("todoDB").Collection("tasks")
 	ctx, _ := context.WithTimeout(context.Background(), 5*time.Second)
 	result, _ := collection.InsertOne(ctx, task)
+
+	json.NewEncoder(w).Encode(result)
+}
+
+func deleteTask(client *mongo.Client, w http.ResponseWriter, r *http.Request) {
+	// Get the task ID from URL query parameter
+	taskID := r.URL.Query().Get("id")
+	if taskID == "" {
+		http.Error(w, "Missing task ID", http.StatusBadRequest)
+		return
+	}
+
+	// Connect to the collection
+	collection := client.Database("todoDB").Collection("tasks")
+	ctx, _ := context.WithTimeout(context.Background(), 5*time.Second)
+
+	// Delete the task
+	result, err := collection.DeleteOne(ctx, bson.M{"_id": taskID})
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 
 	json.NewEncoder(w).Encode(result)
 }
