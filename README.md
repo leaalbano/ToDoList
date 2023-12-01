@@ -21,29 +21,43 @@
 ![Todolist](./src/components/image.png)
 
 # REST API
+* Explanation: The REST API currently has 4 endpoints that do the following tasks:
+  * Create Task
+  * Get Task
+  * Delete Task
+  * Update Task
 
-Explanation: The REST API currently has two endpoints that do the following tasks "Create & List" tasks. One creates tasks and one lists all the tasks, later I will implement delete and editing
-
-# First End-Point:
-Request Type: POST
+# First End-Point: Create Task
+**POST:**
+* Request Type: POST
+```
 URL: http://localhost:8080/createTask
 JSON DATA: { "title":"Clean the bathroom", "status": "uncomplete" }
+```
+* Instructions: Send a POST Request to the "URL" with similar JSON Data, must contain a title to name the task, and a status such as "incomplete" or "inprogress"
 
-# Instructions: Send a POST Request to the "URL" with similar JSON Data, must contain a title to name the task, and a status such as "incomplete" or "inprogress"
-
-# Second End-Point:
-Request Type: GET
+# Second End-Point: Get Task
+**GET:**
+* Request Type: GET
+```
 URL: http://localhost:8080/getTasks
-
-# Instructions: Send a GET request to the "URL" and it will return all created tasks in the following order. An JSON Array.
+```
+* Instructions: Send a GET request to the "URL" and it will return all created tasks in the following order. An JSON Array.
 
 Returned Data: [{"id":"655d349bd0d52073c93b5524","title":"Clean the bathroom","status":"uncomplete","createdAt":"2023-11-21T22:52:11.641Z"},{"id":"655d3584d0d52073c93b5525","title":"Clean the garage","status":"uncomplete","createdAt":"2023-11-21T22:56:04.703Z"}]
 
-# DELETE:
+# Third End-Point: Delete Task
+**DELETE:**
+* Request type: DELETE
+```
 curl -X DELETE "http://localhost:8080/deleteTask?id=TaskIDHere"
+```
+* Instructions: Deletes the Task based on the TaskID
 
-
-# UPDATE: 
+# Fourth End-Point: Update Task
+**UPDATE:** 
+* Request type: PUT
+```
 curl -X PUT "http://localhost:8080/updateTask" \
      -H "Content-Type: application/json" \
      -d '{
@@ -51,8 +65,9 @@ curl -X PUT "http://localhost:8080/updateTask" \
          "title": "Updated Task Title",
          "status": "Updated Status"
          }
+```
+* Instructions: Updates the tasks based on the TaskID and what new title and status you want to put for the task
 
-
-         
+# Rest API Design
 <img width="583" alt="image" src="https://github.com/leaalbano/ToDoList/assets/123431574/2bb7f6e4-a829-4769-b8f2-b2b27825d99a">
 
