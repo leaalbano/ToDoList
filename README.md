@@ -51,3 +51,5 @@ curl -X PUT "http://localhost:8080/updateTask" \
          "title": "Updated Task Title",
          "status": "Updated Status"
          }
+<img width="583" alt="image" src="https://github.com/leaalbano/ToDoList/assets/123431574/2bb7f6e4-a829-4769-b8f2-b2b27825d99a">
+
