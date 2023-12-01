@@ -31,7 +31,7 @@
 **POST:**
 * Request Type: POST
 ```
-URL: http://localhost:8080/createTask
+URL: http://localhost:8081/createTask
 JSON DATA: { "title":"Clean the bathroom", "status": "uncomplete" }
 ```
 * Instructions: Send a POST Request to the "URL" with similar JSON Data, must contain a title to name the task, and a status such as "incomplete" or "inprogress"
@@ -40,7 +40,7 @@ JSON DATA: { "title":"Clean the bathroom", "status": "uncomplete" }
 **GET:**
 * Request Type: GET
 ```
-URL: http://localhost:8080/getTasks
+URL: http://localhost:8081/getTasks
 ```
 * Instructions: Send a GET request to the "URL" and it will return all created tasks in the following order. An JSON Array.
 
@@ -50,7 +50,7 @@ Returned Data: [{"id":"655d349bd0d52073c93b5524","title":"Clean the bathroom","s
 **DELETE:**
 * Request type: DELETE
 ```
-curl -X DELETE "http://localhost:8080/deleteTask?id=TaskIDHere"
+curl -X DELETE "http://localhost:8081/deleteTask?id=TaskIDHere"
 ```
 * Instructions: Deletes the Task based on the TaskID
 
@@ -58,7 +58,7 @@ curl -X DELETE "http://localhost:8080/deleteTask?id=TaskIDHere"
 **UPDATE:** 
 * Request type: PUT
 ```
-curl -X PUT "http://localhost:8080/updateTask" \
+curl -X PUT "http://localhost:8081/updateTask" \
      -H "Content-Type: application/json" \
      -d '{
          "id": "TaskIDHere",
