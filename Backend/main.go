@@ -8,11 +8,12 @@ import (
 	"time"
 
 	"github.com/rs/cors"
-
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
+
 
 type Task struct {
 	ID        string    `json:"id,omitempty" bson:"_id,omitempty"`
@@ -33,24 +34,31 @@ func main() {
 	}
 	defer client.Disconnect(ctx)
 
+	//Configure CORS
+	corsHandler := cors.New(cors.Options{
+        AllowedOrigins: []string{"http://localhost:8080"}, 
+        AllowedMethods: []string{"GET", "POST", "PUT", "DELETE"},
+    })
+
+
 	// Proceed with setting up your API routes
-	http.Handle("/createTask", cors.Default().Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		createTask(client, w, r)
-	})))
+    http.Handle("/createTask", corsHandler.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        createTask(client, w, r)
+    })))
 
-	http.Handle("/getTasks", cors.Default().Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		getTasks(client, w, r)
-	})))
+    http.Handle("/getTasks", corsHandler.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        getTasks(client, w, r)
+    })))
 
-	http.Handle("/deleteTask", cors.Default().Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		deleteTask(client, w, r)
-	})))
+    http.Handle("/deleteTask", corsHandler.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        deleteTask(client, w, r)
+    })))
 
-	http.Handle("/updateTask", cors.Default().Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		updateTask(client, w, r)
-	})))
+    http.Handle("/updateTask", corsHandler.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        updateTask(client, w, r)
+    })))
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":8081", nil))
 }
 
 // UpdateTask function
@@ -122,12 +130,19 @@ func deleteTask(client *mongo.Client, w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Convert the taskID string to an ObjectId type
+	objectID, err := primitive.ObjectIDFromHex(taskID)
+	if err != nil {
+		http.Error(w, "Invalid task ID", http.StatusBadRequest)
+		return
+	}
+
 	// Connect to the collection
 	collection := client.Database("todoDB").Collection("tasks")
 	ctx, _ := context.WithTimeout(context.Background(), 5*time.Second)
 
 	// Delete the task
-	result, err := collection.DeleteOne(ctx, bson.M{"_id": taskID})
+	result, err := collection.DeleteOne(ctx, bson.M{"_id": objectID})
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -135,6 +150,7 @@ func deleteTask(client *mongo.Client, w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode(result)
 }
+
 
 func getTasks(client *mongo.Client, w http.ResponseWriter, r *http.Request) {
 	var tasks []Task
