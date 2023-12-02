@@ -63,7 +63,7 @@ const PomodoroTimer = () => {
 
     return (
         <div className='timer-container'>
-            <h1>Pomodoro Timer</h1>
+            <h1>Pomodoro</h1>
             <div className="timer-options">
                 <button className={`timer-option ${selectedTime === pomodoroTime ? 'selected' : ''}`} onClick={() => {setSelectedTime(pomodoroTime); setLastChanged('pomodoro');}}>Pomodoro</button>
                 <button className={`timer-option ${selectedTime === shortBreakTime ? 'selected' : ''}`} onClick={() => {setSelectedTime(shortBreakTime); setLastChanged('shortBreak');}}>Short Break</button>

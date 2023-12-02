@@ -81,10 +81,11 @@ const TodoList = () => {
   };
 
   return (
+    <div className="todo-wrapper">
     <div>
       <PomodoroTimer />
       <div className="header">
-        <h2 style={{ margin: '5px' }}>Long To Do List</h2>
+        <h2 style={{ margin: '5px' }}>To Do List</h2>
         <input
           type="text"
           value={newTask}
@@ -113,6 +114,7 @@ const TodoList = () => {
           </li>
         ))}
       </ul>
+    </div>
     </div>
   );
 };

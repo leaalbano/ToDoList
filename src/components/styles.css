@@ -2,6 +2,7 @@
 create classes to design the html parts */
 /* Include the padding and border in an element's total width and height */
 body {
+  background: linear-gradient(to right, #ff9966, #ff5e62);
   margin: 0;
   min-width: 250px;
 }
@@ -122,37 +123,48 @@ input {
   background-color: #bbb;
 }
 
+.todo-wrapper {
+  max-width: 95%;
+  margin: 0 auto; 
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.1); 
+}
+
 .timer-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
-}
-
-.button-container-timer {
-  display:flex;
-  justify-content: center;
-  gap: 10px;
-  padding-bottom: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 500px; 
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .timer-button {
-  background-color: #4CAF50; /* Green background */
-  border: none; /* Remove border */
-  color: white; /* White text */
-  padding: 15px 32px; /* Some padding */
-  text-align: center; /* Centered text */
-  text-decoration: none; /* Remove underline */
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
-  cursor: pointer; /* Pointer/hand icon */
-  transition-duration: 0.4s; /* Transition */
+  cursor: pointer;
+  transition-duration: 0.4s;
+  border-radius: 5px; 
 }
 
 .timer-button:hover {
-  background-color: #45a049; /* Green background on hover */
+  background-color: #45a049;
+  transform: scale(1.05); 
 }
 
 .timer-options {
@@ -169,6 +181,7 @@ input {
   cursor: pointer;
   background-color: #ddd;
   transition: background-color 0.3s ease;
+  border-radius: 5px; 
 }
 
 .timer-option.selected {
@@ -196,4 +209,5 @@ input {
   width: 100px;
   border: 1px solid #000;
   margin-left: 10px;
+  border-radius: 5px; 
 }
