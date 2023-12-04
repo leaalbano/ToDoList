@@ -211,3 +211,9 @@ input {
   margin-left: 10px;
   border-radius: 5px; 
 }
+
+.task-date {
+  color: #555;
+  font-size: 0.9em;
+  margin-top: 5px;
+}

@@ -50,14 +50,32 @@ const TodoList = () => {
       });
   };
 
-  //TODO WORK WITH UPDATE API CALL TO MAKE THIS WORK
-  //**************** */
-  const markTaskComplete = (id) => {
-    const updatedTasks = tasks.map(task => task.id === id ? {...task, status: 'complete'} : task);
-    setTasks(updatedTasks);
+  
+  const toggleTaskStatus = (id, title, currentStatus) => {
+    const updatedStatus = currentStatus === 'complete' ? 'uncomplete' : 'complete';
+
+    const updatedTask = {
+      id: id,
+      title: title,
+      status: updatedStatus
+    };
+    
+    fetch('http://localhost:8081/updateTask', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedTask)
+    })
+    .then(response => response.json())
+    .then(() => {
+      fetchTasks();
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   };
-  //*************** */
-  //
+  
   
 
   const deleteTask = (id) => {
@@ -102,9 +120,10 @@ const TodoList = () => {
           <li
             key={task.id}
             className={task.status === 'complete' ? 'checked' : ''}
-            onClick={() => markTaskComplete(task.id)}
+            onClick={() => toggleTaskStatus(task.id, task.title, task.status)}
           >
             {task.title}
+            <div className="task-date">Date Added: {new Date(task.createdAt).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })}</div>
             <span
               className="close"
               onClick={() => deleteTask(task.id)}

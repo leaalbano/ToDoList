@@ -76,12 +76,19 @@ func updateTask(client *mongo.Client, w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Convert the task ID to an ObjectID
+	objectID, err := primitive.ObjectIDFromHex(task.ID)
+	if err != nil {
+		http.Error(w, "Invalid task ID", http.StatusBadRequest)
+		return
+	}
+
 	// Connect to the collection
 	collection := client.Database("todoDB").Collection("tasks")
 	ctx, _ := context.WithTimeout(context.Background(), 5*time.Second)
 
 	// Create a filter for the document to update
-	filter := bson.M{"_id": task.ID}
+	filter := bson.M{"_id": objectID}
 
 	// Define the update
 	update := bson.M{

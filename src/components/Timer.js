@@ -9,11 +9,11 @@ import soundFile from '../sounds/timerOff.mp3';
 const PomodoroTimer = () => {
     const [timeLeft, setTimeLeft] = useState(10);
     const [isRunning, setIsRunning] = useState(false);
-    const [selectedTime, setSelectedTime] = useState(10);
+    const [selectedTime, setSelectedTime] = useState(1500);
     const [settingsOpen, setSettingsOpen] = useState(false);
-    const [pomodoroTime, setPomodoroTime] = useState(10);
-    const [shortBreakTime, setShortBreakTime] = useState(5);
-    const [longBreakTime, setLongBreakTime] = useState(15);
+    const [pomodoroTime, setPomodoroTime] = useState(1500);
+    const [shortBreakTime, setShortBreakTime] = useState(300);
+    const [longBreakTime, setLongBreakTime] = useState(1200);
     const [lastChanged, setLastChanged] = useState('pomodoro'); // Added this line to keep track of the last changed button
 
     const sound = new Audio(soundFile);
