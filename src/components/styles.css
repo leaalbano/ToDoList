@@ -22,10 +22,12 @@ ul {
 ul li {
   cursor: pointer;
   position: relative;
+  border-radius: 10px;
   padding: 12px 8px 12px 40px;
   list-style-type: none;
   background: #eee;
   font-size: 18px;
+  font-family:"Lucida Console", monospace;
   transition: 0.2s;
   
   /* make the list items unselectable */
@@ -81,10 +83,12 @@ ul li.checked::before {
 
 /* Style the header */
 .header {
-  background-color: #f44336;
+  background-color: #b3c9f4;
+  border-radius: 10px;
   padding: 30px 40px;
   color: white;
   text-align: center;
+  font-family: "Lucida Console", monospace;
 }
 
 /* Clear floats after the header */
@@ -98,16 +102,18 @@ ul li.checked::before {
 input {
   margin: 0;
   border: none;
-  border-radius: 0;
+  border-radius: 10px;
   width: 75%;
   padding: 10px;
   float: left;
   font-size: 16px;
+  font-style: "Lucida Console", monospace;
 }
 
 /* Style the "Add" button */
 .addBtn {
   padding: 10px;
+  border-radius: 10px !important;
   width: 25%;
   background: #d9d9d9;
   color: #555;
@@ -145,6 +151,7 @@ input {
   max-width: 500px; 
   margin: 0 auto;
   margin-bottom: 20px;
+  font-family:"Lucida Console", monospace;
 }
 
 .timer-button {
@@ -160,6 +167,7 @@ input {
   cursor: pointer;
   transition-duration: 0.4s;
   border-radius: 5px; 
+  font-family:"Lucida Console", monospace;
 }
 
 .timer-button:hover {
