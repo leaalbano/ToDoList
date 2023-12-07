@@ -21,10 +21,15 @@
 
 # How to compile Backend
 1 - install golang (link to golang)
+
 2  - create folder
+
 3 - download the git main.go files
+
 4 - run "go mod tidy"
+
 5 - "go run main.go"
+
 6 - allow network access if requested
 
 
