@@ -1,6 +1,20 @@
-# ToDoList Timer
-
-* Pomodoro timer to help people stay on task
+# Step by Step Instructions on running terminal
+1. Check to see if you have Node.js installed:
+    "node -v" in terminal
+        If nothing shows, install node.js: https://nodejs.org/en
+2. Check to see if Go is installed:
+    "go version" in terminal
+        If no version shows install Go: https://go.dev/dl/
+3. Clone repo  
+    "git clone https://github.com/leaalbano/ToDoList.git"
+    go to directory that has package.json
+    "npm install"
+        This will get all the dependacies 
+4. With all that installed, navigate to Backend directory in a terminal
+    "go run main.go"
+5. Now with another terminal
+    Do "npm start" in directory where webpack.config.js file is located
+6. localhost link should show, paste that link into browser
 
 
 # How to run Go Server
