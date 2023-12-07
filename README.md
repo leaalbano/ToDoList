@@ -16,15 +16,17 @@
     Do "npm start" in directory where webpack.config.js file is located
 6. localhost link should show, paste that link into browser
 
+# How to compile Frontend 
 
-# How to run Go Server
-  * install Go
-  * in backend folder run 'go run main.go'
-  * Now the backend can communicate with the server
 
-# How to run todo list
-  * install webpack
-  * npm start within the directory where the webpack.config is
+# How to compile Backend
+1 - install golang (link to golang)
+2  - create folder
+3 - download the git main.go files
+4 - run "go mod tidy"
+5 - "go run main.go"
+6 - allow network access if requested
+
 
 
 # Ports
