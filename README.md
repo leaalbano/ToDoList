@@ -1,4 +1,4 @@
-# Step by Step Instructions on running terminal
+# Step by Step Instructions:
 1. Check to see if you have Node.js installed:
     "node -v" in terminal
         If nothing shows, install node.js: https://nodejs.org/en
