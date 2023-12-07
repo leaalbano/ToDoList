@@ -16,9 +16,6 @@
     Do "npm start" in directory where webpack.config.js file is located
 6. localhost link should show, paste that link into browser
 
-# How to compile Frontend 
-
-
 # How to compile Backend
 1 - install golang (link to golang)
 
