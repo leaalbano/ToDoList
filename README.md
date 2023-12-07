@@ -1,4 +1,4 @@
-# Step by Step Instructions:
+# Step by Step Instructions to Run Web App
 1. Check to see if you have Node.js installed:
     "node -v" in terminal
         If nothing shows, install node.js: https://nodejs.org/en
