@@ -17,19 +17,16 @@
 6. localhost link should show, paste that link into browser
 
 # How to compile Backend
-1 - install golang (link to golang)
+### Install Go Programming Language:
+    * Visit the official Go programming language website at golang.org
+    * Download the appropriate installer for your operating system (Windows, macOS, Linux).
+    * Run the Installer and follow the on-screen instructions to complete the installation.
+    * To verify the installation, open a terminal or command prompt and type '**go version**'. You should see the installed version of Go displayed. 
 
-2  - create folder
-
-3 - download the git main.go files
-
-4 - run "go mod tidy"
-
-5 - "go run main.go"
-
-6 - allow network access if requested
-
-
+### Create a New Folder for The Project:
+    * Choose a location on your computer where you want to store your Go project.
+    * Create a new folder in this location. You can name it according to your project name or any name you prefer.
+    * Navigate to this folder in your terminal or command prompt.
 
 # Ports
   * Had to use github.com/rs/cors so that we can use two different ports on the same localMachine for the front and backend
