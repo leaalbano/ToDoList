@@ -21,11 +21,13 @@
     * Visit the official Go programming language website at golang.org
     * Download the appropriate installer for your operating system (Windows, macOS, Linux).
     * Run the Installer and follow the on-screen instructions to complete the installation.
-    * To verify the installation, open a terminal or command prompt and type '**go version**'. You should see the installed version of Go displayed. 
+    * To verify the installation, open a terminal or command prompt and type '**go version**'. 
+      You should see the installed version of Go displayed. 
 
 ### Create a New Folder for The Project:
     * Choose a location on your computer where you want to store your Go project.
-    * Create a new folder in this location. You can name it according to your project name or any name you prefer.
+    * Create a new folder in this location. 
+      You can name it according to your project name or any name you prefer.
     * Navigate to this folder in your terminal or command prompt.
 
 # Ports
